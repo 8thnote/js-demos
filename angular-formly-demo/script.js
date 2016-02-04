@@ -11,7 +11,7 @@
 	});
 	
 	
-	app.controller('MainCtrl', function ($http, WizardHandler) {
+	app.controller('MainCtrl', function ($http) {
 	
 		var vm = this;
 		
@@ -24,11 +24,6 @@
 		
 		vm.exitValidation = function(form) {
 			return form && !form.$invalid;
-		};
-		
-		vm.progressForm = function() {
-			WizardHandler.wizard().next();
-			$('form').find('input:first').focus();	
 		};
 		
 		vm.getLoan = function() {

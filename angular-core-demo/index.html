@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- style -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- scripts -->
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js"></script>
+
+    <!-- demo angular-core -->
+    <script src="app.js"></script>
+    <script src="custom-validator.js"></script>
+
+    <title>Origination Demo</title>
+  </head>
+
+  <body ng-app="app" ng-controller="MainCtrl as vm">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-center">
+          
+          <div class="row">
+            <div class="col-sm-offset-3 col-sm-9">
+              <h1>New Demo</h1>
+            </div>
+          </div>
+          
+      
+          <form name="cbl1" class="form-horizontal" novalidate>
+            
+            <script type="text/ng-template" id="my-custom-messages">
+              <!--<p ng-message="required">This field is required</p>-->
+              <p ng-message="minlength">This field is too short</p>
+            </script>
+            
+            
+            <div class="form-group"
+              ng-class="{ 'has-success': cbl1.fName.$touched && cbl1.fName.$valid,
+                          'has-error': cbl1.fName.$touched && cbl1.fName.$invalid }">
+              
+              <label for="fName" class="col-sm-3 control-label">First Name*</label>
+              
+              <div class="col-sm-7">
+                <input type="text" name="fName" id="fName" class="form-control" placeholder="First Name"
+                  ng-model="fNameModel"
+                  required
+                  ng-minlength="2"
+                  validate-fname>
+                  
+                <div ng-messages="cbl1.fName.$error" ng-show="cbl1.fName.$touched">
+                  <p ng-message="minlength" class="invalid">
+                    Minimum of 2 characters
+                  </p>
+                  <p ng-message="fname" class="invalid">
+                    Hey! You're not Sandeep... (unless you are)
+                  </p>
+                  
+                  <div ng-messages-include="my-custom-messages"></div>
+                </div>
+              </div>
+              
+            </div>
+            
+            
+            <div class="form-group" ng-class="{ 'has-error': cbl1.lName.$touched && cbl1.lName.$invalid }">
+              
+              <label for="lName" class="col-sm-3 control-label">Last Name*</label>
+              
+              <div class="col-sm-7">
+                <input type="text" name="lName" id="lName" class="form-control" placeholder="Last Name"
+                  ng-model="lNameModel"
+                  required
+                  ng-minlength="2">
+                  
+                <div ng-messages="cbl1.lName.$error" ng-show="cbl1.lName.$touched">
+                  <p ng-message="minlength" class="invalid">
+                    Minimum of 2 characters
+                  </p>
+                  
+                  <div ng-messages-include="my-custom-messages"></div>
+                </div>
+              </div>
+              
+            </div>
+            
+            
+            <div class="form-group" ng-class="{ 'has-error': cbl1.email.$touched && cbl1.email.$invalid }">
+              
+              <label for="email" class="col-sm-3 control-label">Email*</label>
+              
+              <div class="col-sm-7">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                  ng-model="email"
+                  required>
+                  
+                <div ng-messages="cbl1.email.$error" ng-show="cbl1.email.$touched">
+                  <p ng-message="email" class="invalid">
+                    Invalid email
+                  </p>
+                  
+                  <div ng-messages-include="my-custom-messages"></div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <div class="form-group" 
+              ng-class="{ 'has-success': cbl1.passphrase.$touched && cbl1.passphrase.$valid,
+                          'has-error': cbl1.passphrase.$touched && cbl1.passphrase.$invalid }">
+              
+              <label for="passphrase" class="col-sm-3 control-label">Pass Phrase</label>
+              
+              <div class="col-sm-7">
+                <input type="password" name="passphrase" id="passphrase" class="form-control" placeholder="Pass Phrase"
+                  ng-focus="cbl1.passphrase.hasFocus=true"
+                  ng-blur="cbl1.passphrase.hasFocus=false"
+                  ng-model="passphrase"
+                  required
+                  ng-minlength="16"
+                  validate-passphrase>
+                
+                <div ng-messages="cbl1.email.$error" ng-show="cbl1.email.$touched">
+                  <p ng-message="password" class="invalid">
+                    Invalid password
+                  </p>
+                  
+                  <div ng-messages-include="my-custom-messages"></div>
+                </div>
+                
+                <div class="help-block" ng-show="cbl1.passphrase.hasFocus">
+                  <p>A phrase you'll remember consisting of at least 16 characters with no spaces.</p>
+                </div>
+              </div>
+              
+            </div>
+            
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default submit-button"
+                  ng-disabled="!cbl1.$valid">
+                  
+                    Continue
+                    
+                </button>
+              </div>
+            </div>
+          </form>
+          
+        </div><!-- col -->
+      </div><!-- row -->
+    </div><!-- container -->
+  </body>
+
+</html>
