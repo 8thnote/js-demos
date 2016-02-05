@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- style -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- scripts -->
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js"></script>
+
+    <!-- demo angular-core -->
+    <script src="app.js"></script>
+    <script src="custom-validator.js"></script>
+
+    <title>Origination Demo</title>
+  </head>
+
+  <body ng-app="app" ng-controller="MainCtrl as vm">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-center">
+            
+            <div class="row">
+              <div class="col-sm-offset-3 col-sm-9">
+                <h1>Quick Test: step {{ vm.appStep }}</h1>
+                <p><a ng-click="vm.fillStep1()" href="#">fill form</a></p>
+              </div>
+            </div>
+            
+            <div ng-switch="vm.appStep">
+              <div ng-switch-when="1">
+                <div ng-include="'step1-pt1.html'"></div>
+              </div>
+              <div ng-switch-when="2">
+                <div ng-include="'step1-pt2.html'"></div>
+              </div>
+            </div>
+            
+
+            <style>
+              code {display: block; margin: 1em 0;}
+              pre {margin-bottom: 0;}
+            </style>
+            <code>
+              <pre>
+                {{ vm.cbl1 | json }}
+              </pre>
+            </code>
+
+        </div><!-- col -->
+      </div><!-- row -->
+    </div><!-- container -->
+  </body>
+
+</html>

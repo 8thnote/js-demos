@@ -1,0 +1,130 @@
+<form name="cbl" class="form-horizontal" novalidate>
+
+<div class="form-group"
+  ng-class="{ 'has-success': cbl.fName.$touched && cbl.fName.$valid,
+              'has-error': cbl.fName.$touched && cbl.fName.$invalid }">
+  
+  <label for="fName" class="col-sm-3 control-label">First Name*</label>
+  
+  <div class="col-sm-7">
+    <input type="text" name="fName" id="fName" class="form-control" placeholder="First Name"
+      ng-model="vm.cbl1.fName"
+      required
+      ng-minlength="2"
+      validate-fname>
+      
+    <div ng-messages="cbl.fName.$error" ng-show="cbl.fName.$touched">
+      <p ng-message="minlength" class="invalid">
+        Minimum of 2 characters
+      </p>
+      <p ng-message="fname" class="invalid">
+        Hey! You're not Sandeep... (unless you are)
+      </p>
+      
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error': cbl.lName.$touched && cbl.lName.$invalid }">
+  
+  <label for="lName" class="col-sm-3 control-label">Last Name*</label>
+  
+  <div class="col-sm-7">
+    <input type="text" name="lName" id="lName" class="form-control" placeholder="Last Name"
+      ng-model="vm.cbl1.lName"
+      required
+      ng-minlength="2">
+      
+    <div ng-messages="cbl.lName.$error" ng-show="cbl.lName.$touched">
+      <p ng-message="minlength" class="invalid">
+        Minimum of 2 characters
+      </p>
+      
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error': cbl.email.$touched && cbl.email.$invalid }">
+  
+  <label for="email" class="col-sm-3 control-label">Email*</label>
+  
+  <div class="col-sm-7">
+    <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+      ng-model="vm.cbl1.email"
+      required>
+      
+    <div ng-messages="cbl.email.$error" ng-show="cbl.email.$touched">
+      <p ng-message="email" class="invalid">
+        Invalid email
+      </p>
+      
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="form-group" 
+  ng-class="{ 'has-success': cbl.passphrase.$touched && cbl.passphrase.$valid,
+              'has-error': cbl.passphrase.$touched && cbl.passphrase.$invalid  }">
+  
+  <label for="passphrase" class="col-sm-3 control-label">Pass Phrase</label>
+  
+  <div class="col-sm-7">
+    <input type="password" name="passphrase" id="passphrase" class="form-control" placeholder="Pass Phrase"
+      ng-focus="cbl.passphrase.hasFocus=true"
+      ng-blur="cbl.passphrase.hasFocus=false"
+      ng-model="vm.cbl1.passphrase"
+      required
+      ng-minlength="16"
+      validate-passphrase>
+    
+    <div ng-messages="cbl.email.$error" ng-show="cbl.email.$touched">
+      <p ng-message="password" class="invalid">
+        Invalid password
+      </p>
+      
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+    
+    <div class="help-block" ng-show="cbl.passphrase.hasFocus">
+      <p>A phrase you'll remember consisting of at least 16 characters with no spaces.</p>
+    </div>
+  </div>
+  
+</div>
+
+<div class="form-group" 
+  ng-class="{ 'has-success': cbl.passphrase.$valid,
+              'has-error': cbl.passphrase.$touched && cbl.passphrase.$invalid  }">
+  
+    <div class="col-sm-offset-3 col-sm-9">
+    
+        <input type="checkbox" name="demoCheck" id="demoCheck"
+          ng-model="vm.cbl1.demoCheck"
+          required>
+          
+        <label for="demoCheck" class="control-label check-label">You need to check this</label>
+      
+    </div>
+    
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <form-buttons
+    current-form="cbl"
+    forward-cb="vm.stepForward()"
+    backward-cb="vm.stepBackward()"
+    current-step="vm.appStep"
+    total-steps="10"></form-buttons>
+  </div>
+</div>
+
+</form>

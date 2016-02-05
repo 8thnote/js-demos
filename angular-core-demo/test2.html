@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="MainCtrl as vm">
+
+  <head>
+    <!-- style -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- scripts -->
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js"></script>
+
+    <!-- demo angular-core -->
+    <script src="app.js"></script>
+    <script src="custom-validator.js"></script>
+
+    <title>Origination Demo</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-center">
+            
+            <h1>Quick Test</h1>
+          
+            <form name="vm.cbl1" novalidate>
+                <input type="text" name="fName" ng-model="vm.cbl1.fName" class="form-control" required>
+                <input type="text" name="lName" ng-model="vm.cbl1.lName" class="form-control" required>
+                <button ng-disabled="!vm.cbl1.$valid" ng-click="vm.finish()">Done</button>
+            </form>
+          
+        </div><!-- col -->
+      </div><!-- row -->
+    </div><!-- container -->
+  </body>
+
+</html>

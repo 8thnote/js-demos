@@ -1,0 +1,51 @@
+<form name="cbl" class="form-horizontal" novalidate>
+
+<div class="form-group"
+  ng-class="{ 'has-success': cbl.another1.$touched && cbl.another1.$valid,
+              'has-error': cbl.another1.$touched && cbl.another1.$invalid }">
+  
+  <label for="another1" class="col-sm-3 control-label">Another 1*</label>
+  
+  <div class="col-sm-7">
+    <input type="text" name="another1" id="another1" class="form-control" placeholder="Another 1"
+      ng-model="vm.cbl1.another1"
+      required
+      ng-minlength="2">
+      
+    <div ng-messages="cbl.another1.$error" ng-show="cbl.another1.$touched">
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error': cbl.another2.$touched && cbl.another2.$invalid }">
+  
+  <label for="another2" class="col-sm-3 control-label">Another 2*</label>
+  
+  <div class="col-sm-7">
+    <input type="text" name="another2" id="another2" class="form-control" placeholder="Another 2"
+      ng-model="vm.cbl1.another2"
+      required
+      ng-minlength="2">
+      
+    <div ng-messages="cbl.another2.$error" ng-show="cbl.another2.$touched">
+      <div ng-messages-include="my-custom-messages.html"></div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <form-buttons
+    current-form="cbl"
+    forward-cb="vm.stepForward()"
+    backward-cb="vm.stepBackward()"
+    current-step="vm.appStep"
+    total-steps="10"></form-buttons>
+  </div>
+</div>
+
+</form>

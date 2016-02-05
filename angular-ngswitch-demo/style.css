@@ -1,0 +1,26 @@
+h1 {
+    margin-bottom: 1em;
+}
+
+.col-center {
+    float: none;
+    margin: 0 auto;
+}
+
+.submit-button {
+  background-color: #ff9901 !important;
+  border-color: #E88E09 !important;
+  color: #fff;
+  font-size: 1.3em;
+  margin: 1.5em 0;
+  padding: .2em 1em;
+}
+
+.submit-button:hover {
+    color: #fff;
+}
+
+.check-label {
+    font-weight: normal;
+    display: inline;
+}

@@ -1,0 +1,7 @@
+<button type="button" class="btn btn-default"
+    ng-click="backwardCb()"
+    ng-hide="currentStep === 1">Prev Step</button>
+
+<button type="button" class="btn btn-default submit-button"
+    ng-click="forwardCb()"
+    ng-disabled="!currentForm.$valid || currentStep === totalSteps">Next Step</button>
